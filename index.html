@@ -82,6 +82,7 @@
 
             <h2 class="my-5">Total por Profes</h2>
 
+
             <address></address>
           </div>
         </div>
@@ -163,21 +164,52 @@
                         veintidos.innerHTML += "♥ ";
                       }
 
-                      profes.push(x.tutor);
+                      let profesor = {"name": x.tutor,"sietes":1};
+                      var existe = false;
+                      profes.forEach(profeLeido => {
+                        if(profeLeido.name == x.tutor){
+                          profeLeido.sietes += 1;
+                          existe = true;
+                        }
+                      });
+                      if(existe == false){
+                        profes.push(profesor);
+
+                      }
                     });
 
-                    console.log(profes);
-
-                    profesOK = [...new Set(profes)];
-
-                    profesOK.sort();
-
-                    console.log(profesOK);
-
-                    olimpo.innerHTML = "Acá irían los profes… ";
+                    
                 },
             });
+
+            console.log("Leyendo los profes sin filtrar");
+
+            console.log(profes);
+
+            profes.forEach(x => {
+              console.log("profesor: ",x);
+              olimpo.innerHTML += `<table class="table table-striped"><tr><td>${x.name}</td></tr><tr><td>${x.sietes}</td></tr>`;
+            });
+
                   
+         /*   Papa.parse("https://raw.githubusercontent.com/profesorfaco/dno097-2024/main/clase-04/sietes.csv", {
+                download: true,
+                header: true,
+                dynamicTyping: true,
+                complete: function (results) {
+                    console.log(results);
+                    datos = results.data;
+                    console.log(datos);
+                    datos.forEach(y => {
+                      console.log("Profesor: ",y.tutor);
+                      olimpo.innerHTML += `<table class="table table-striped"><tr><td>${y.tutor}</td></tr>`;
+
+                                  
+                    });
+
+                    
+                },
+            });  */        
 
                          
                    
