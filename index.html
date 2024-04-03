@@ -81,6 +81,38 @@
             </table>
 
             <h2 class="my-5">Total por Profes</h2>
+            <table class="table table-striped">
+             <tr>
+              <td>GONZÁLEZ, A.</td><td id="gonzalez"></td>
+            </tr>
+            <tr>
+              <td>MORENO, P.</td><td id="moreno"> </td>
+            </tr>
+            <tr>
+              <td>HERMANSEN, P.</td><td id="hermansen"> </td>
+            </tr>
+            <tr>
+              <td>ARIAS, R.</td><td id="arias"> </td>
+            </tr>
+            <tr>
+              <td>ALVAREZ, P.</td><td id="alvarez"> </td>
+            </tr>
+            <tr>
+              <td>ALFARO, E.</td><td id="alfaro"> </td>
+            </tr>
+            <tr>
+              <td>UBILLA, M.</td><td id="ubilla"> </td>
+            </tr>
+            <tr>
+              <td>CANCINO, J.</td><td id="cancino"> </td>
+            </tr>
+            <tr>
+              <td>CARO, I.</td><td id="caro"> </td>
+            </tr>
+            <tr>
+              <td>MOLLENHAUER, K.</td><td id="mollenhauer"> </td>
+            </tr>
+
 
 
             <address></address>
@@ -182,34 +214,59 @@
                 },
             });
 
-            console.log("Leyendo los profes sin filtrar");
-
             console.log(profes);
 
-            profes.forEach(x => {
-              console.log("profesor: ",x);
-              olimpo.innerHTML += `<table class="table table-striped"><tr><td>${x.name}</td></tr><tr><td>${x.sietes}</td></tr>`;
-            });
+            profesOK = [...new Set(profes)];
 
-                  
-         /*   Papa.parse("https://raw.githubusercontent.com/profesorfaco/dno097-2024/main/clase-04/sietes.csv", {
-                download: true,
-                header: true,
-                dynamicTyping: true,
-                complete: function (results) {
-                    console.log(results);
-                    datos = results.data;
-                    console.log(datos);
-                    datos.forEach(y => {
-                      console.log("Profesor: ",y.tutor);
-                      olimpo.innerHTML += `<table class="table table-striped"><tr><td>${y.tutor}</td></tr>`;
+            profesOK.sort();
+            console.log(profesOK);
 
-                                  
-                    });
+            const gonzalez = document.querySelector("#gonzalez");
+            const moreno = document.querySelector("#moreno");
+            const hermansen = document.querySelector("#hermansen");
+            const arias = document.querySelector("#arias");
+            const alvarez = document.querySelector("#alvarez");
+            const alfaro = document.querySelector("#alfaro");
+            const ubilla = document.querySelector("#ubilla");
+            const cancino = document.querySelector("#cancino");
+            const caro = document.querySelector("#caro");
+            const mollenhauer = document.querySelector("#mollenhauer");
 
-                    
-                },
-            });  */        
+            Papa.parse("https://raw.githubusercontent.com/profesorfaco/dno097-2024/main/clase-04/sietes.csv", {
+             download: true,
+             header: true,
+             dynamicTyping: true,
+             complete: function(results) {
+              console.log(results);
+              datos = results.data;
+              console.log(datos);
+              datos.forEach((x) => {
+               if (x.tutor == "GONZÁLEZ, A.") {
+                gonzalez.innerHTML += "♥ ";
+               } else if (x.tutor == "MORENO, P.") {
+                moreno.innerHTML += "♥ ";
+               } else if (x.tutor == "HERMANSEN, P.") {
+                hermansen.innerHTML += "♥ ";
+               } else if (x.tutor == "ARIAS, R.") {
+                arias.innerHTML += "♥ ";
+               } else if (x.tutor == "ALVAREZ, P.") {
+                alvarez.innerHTML += "♥ ";
+               } else if (x.tutor == "ALFARO, E.") {
+                alfaro.innerHTML += "♥ ";
+               } else if (x.tutor == "UBILLA, M.") {
+                ubilla.innerHTML += "♥ ";
+               } else if (x.tutor == "CANCINO, J.") {
+                cancino.innerHTML += "♥ ";
+               } else if (x.tutor == "CARO, I.") {
+                caro.innerHTML += "♥ ";
+               } else if (x.tutor == "MOLLENHAUER, K.") {
+                mollenhauer.innerHTML += "♥ ";
+              }
+          });
+
+      
+    },
+});
 
                          
                    
@@ -222,3 +279,4 @@
 
 
 
+  
